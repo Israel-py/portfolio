@@ -212,9 +212,12 @@ form.addEventListener('submit', (e) => {
   else validateField(message, true);
 
   if (valid){
-   fetch("https://portfolio-contact-backend-m5md.onrender.com/api/messages", {
+   fetch("https://formspree.io/f/mzdnpoql", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
       body: JSON.stringify({
         name: name.value.trim(),
         email: email.value.trim(),
@@ -224,12 +227,8 @@ form.addEventListener('submit', (e) => {
     })
     .then(res => res.json())
     .then(data => {
-      if (data.success){
-        formSuccess.classList.add('show');
-        form.reset();
-      } else {
-        alert(data.message || "Something went wrong. Please try again.");
-      }
+      formSuccess.classList.add('show');
+      form.reset();
     })
     .catch(() => {
       alert("Could not send message. Please check your connection and try again.");
