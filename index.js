@@ -212,7 +212,7 @@ form.addEventListener('submit', (e) => {
   else validateField(message, true);
 
   if (valid){
-   fetch("https://portfolio-contact-backend-m5md.onrender.com", {
+   fetch("https://portfolio-contact-backend-m5md.onrender.com/api/messages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
